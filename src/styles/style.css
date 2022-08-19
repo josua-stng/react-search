@@ -20,6 +20,15 @@ body {
   margin-bottom: 20px;
 }
 
+
+.user-style{
+ margin: 0 auto;
+ font-size: 2.5vmin ;
+ width: 40%;
+ list-style: none;
+ border: 2px solid black  ;
+}
+
 input,
 textarea {
   padding: 12px;

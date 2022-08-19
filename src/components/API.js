@@ -5,16 +5,17 @@ const DisplayApi = () => {
   const [data, setData] = useState([]);
   const [showData, setShowData] = useState(false);
   const [query, setQuery] = useState('');
+ 
 
   const handleClick = () => {
     setIsLoadingData(true);
     setShowData(true);
-    const url = 'https://randomuser.me/api/?results=15';
+    const url = 'https://anime-facts-rest-api.herokuapp.com/api/v1';
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
         setIsLoadingData(false);
-        setData(json['results']);
+        setData(json['data']);
         console.log(data);
       })
       .catch((err) => console.log(err));
@@ -23,10 +24,9 @@ const DisplayApi = () => {
   return (
     <div>
       <button onClick={handleClick}>Load Data</button>
+   
       <br />
-
       <input
-        key={data}
         type="text"
         placeholder="search"
         onChange={(event) => setQuery(event.target.value)}
@@ -37,16 +37,20 @@ const DisplayApi = () => {
         ) : (
           data
             .filter((value) => {
-              if (query === '') {   
+              if (query === '') {
                 return value;
               } else if (
-                value.email.toLowerCase().includes(query.toLowerCase())
+                value.anime_name.toLowerCase().includes(query.toLowerCase())
               ) {
                 return value;
               }
-              return false
+              return false;
             })
-            .map((user) => <h1>{user.email} </h1>)
+            .map((user,i) => (
+              <ul>
+                <li key={i} className="user-style">{user.anime_name}</li>
+              </ul>
+            ))
         )
       ) : (
         <div> </div>
