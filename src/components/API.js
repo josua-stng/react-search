@@ -46,9 +46,9 @@ const DisplayApi = () => {
               }
               return false;
             })
-            .map((user,i) => (
-              <ul>
-                <li key={i} className="user-style">{user.anime_name}</li>
+            .map((user,id) => (
+              <ul key={id}>
+                <li  className="user-style">{user.anime_name}</li>
               </ul>
             ))
         )
