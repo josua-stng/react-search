@@ -4,11 +4,12 @@ import DisplayApi from './components/API';
 
 
 
-
 // import style
 import './styles/style.css';
 
 const root = createRoot(document.getElementById('root'));
-// root.render(<CountAngka />);
+
+// root.render(<DisplayApi/>)
 root.render(<DisplayApi/>)
+
 

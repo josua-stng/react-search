@@ -4,6 +4,8 @@
 BmiApp.js
 Form.js
 IncrementDecrement.js
+props.js
+Temperature.js
 
 # dependencies
 /node_modules

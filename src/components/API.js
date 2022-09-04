@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-
+import { Button } from 'react-ui-library-test';
 const DisplayApi = () => {
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [data, setData] = useState([]);
   const [showData, setShowData] = useState(false);
   const [query, setQuery] = useState('');
- 
+
 
   const handleClick = () => {
     setIsLoadingData(true);
     setShowData(true);
-    const url = 'https://anime-facts-rest-api.herokuapp.com/api/v1';
+    const url = 'https://api.publicapis.org/entries';
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
         setIsLoadingData(false);
-        setData(json['data']);
+        setData(json['entries']);
         console.log(data);
       })
       .catch((err) => console.log(err));
@@ -23,8 +23,8 @@ const DisplayApi = () => {
 
   return (
     <div>
-      <button onClick={handleClick}>Load Data</button>
-   
+      <button 
+      onClick={handleClick}>Load Data</button>
       <br />
       <input
         type="text"
@@ -40,21 +40,23 @@ const DisplayApi = () => {
               if (query === '') {
                 return value;
               } else if (
-                value.anime_name.toLowerCase().includes(query.toLowerCase())
+                value.Description.toLowerCase().includes(query.toLowerCase())
               ) {
                 return value;
               }
               return false;
             })
-            .map((user,id) => (
+            .map((user, id) => (
               <ul key={id}>
-                <li  className="user-style">{user.anime_name}</li>
-              </ul>
+                <li className="user-style">{user.Description}</li> 
+              </ul> 
             ))
-        )
+
+        ) 
       ) : (
         <div> </div>
       )}
+     <Button primary>test</Button>
     </div>
   );
 };
